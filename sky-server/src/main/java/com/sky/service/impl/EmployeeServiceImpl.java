@@ -89,14 +89,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         //设置状态
         employee.setStatus(StatusConstant.ENABLE);
 
-        //设置创建时间和更新时间
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-
-        //设置创建人和修改人
-        //改为当前登录用户的id数
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        //设置创建时间和更新时间
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//
+//        //设置创建人和修改人
+//        //改为当前登录用户的id数
+//        employee.setCreateUser(BaseContext.getCurrentId());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         //调用Mapper
         employeeMapper.insert(employee);
@@ -147,9 +147,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void update(Employee employee) {
         //修改员工更新时间
-        employee.setUpdateTime(LocalDateTime.now());
-        //修改员工更新时的操作人
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        //修改员工更新时的操作人
+//        employee.setUpdateUser(BaseContext.getCurrentId());
         //更新员工信息
         employeeMapper.update(employee);
     }
