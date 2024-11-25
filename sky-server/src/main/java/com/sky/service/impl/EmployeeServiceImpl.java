@@ -117,4 +117,52 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new PageResult(employeePage.getTotal(),employeePage.getResult());
     }
 
+    /**
+     *
+     * 设置员工启用禁用登录权限
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        Employee employee=new Employee();
+        //设置员工id
+        employee.setId(id);
+        //修改员工启用禁用状态
+        employee.setStatus(status);
+        //修改员工更新时间
+        employee.setUpdateTime(LocalDateTime.now());
+        //修改员工更新时的操作人
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        //更新员工信息
+        employeeMapper.update(employee);
+    }
+
+    /**
+     *
+     * 修改员工信息
+     * @param employee
+     * @return
+     */
+    @Override
+    public void update(Employee employee) {
+        //修改员工更新时间
+        employee.setUpdateTime(LocalDateTime.now());
+        //修改员工更新时的操作人
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        //更新员工信息
+        employeeMapper.update(employee);
+    }
+
+    /**
+     *
+     * 根据id查询员工
+     * @param id
+     * @return
+     */
+    @Override
+    public Employee selectById(Long id) {
+        return employeeMapper.selectById(id);
+    }
+
 }

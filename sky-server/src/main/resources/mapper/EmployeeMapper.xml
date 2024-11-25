@@ -4,6 +4,7 @@
 <mapper namespace="com.sky.mapper.EmployeeMapper">
 
 
+
     <select id="pageQuery" resultType="com.sky.entity.Employee">
         select * from employee
         <where>
@@ -12,4 +13,38 @@
             </if>
         </where>
     </select>
+
+    <update id="update">
+        update employee 
+        <set>
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="username!=null and username!=''">
+                username=#{username},
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password},
+            </if>
+            <if test="phone!=null and phone!=''">
+                phone=#{phone},
+            </if>
+            <if test="sex!=null">
+                sex=#{sex},
+            </if>
+            <if test="idNumber!=null">
+                id_number=#{idNumber},
+            </if>
+            <if test="status!=null">
+                status=#{status},
+            </if>
+            <if test="updateTime!=null">
+                update_time=#{updateTime},
+            </if>
+            <if test="updateUser!=null">
+                update_user=#{updateUser}
+            </if>
+        where id=#{id};
+        </set>
+    </update>
 </mapper>
